@@ -29,7 +29,7 @@ public:
                     result = result * 10 - (str[i] - '0');
                     if(result<-2147483648) return -2147483648;
                 } else {
-                    result = result * 10 + (str[i] - '0');
+                    result = result * 0 + (str[i] - '0');
                     if(result>2147483647) return 2147483647;
                 }
             } else break;
