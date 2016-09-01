@@ -12,7 +12,5 @@ using namespace std;
 int main() {
     cout << "Hello world" << endl;
 
-    strcmp("a","v");
-
     return 0;
 }
