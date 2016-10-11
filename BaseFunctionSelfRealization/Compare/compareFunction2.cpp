@@ -7,64 +7,109 @@
 #include <list>
 #include <string.h>
 #include <vector>
+#include <stack>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
-struct Item {
-    int type;
-    int id;
+enum some_big_cities {
+     id,
+     name,
+     type,
+     age,
+     yuwen,
+     maths,
+     english,
+     computer,
+     count,
 };
 
-bool lessMark(const Item& lit, const Item& rit) {
-    return lit.type < rit.type;
-}
+struct Item {
+    int id;
+    string name;
+    string type;
+    int age;
+    int yuwen;
+    int maths;
+    int english;
+    int computer;
+    int count;
+};
 
-bool greaterMark(const Item& lit, const Item& rit) {
-    return lit.type > rit.type;
+bool idMark(const Item& lit, const Item& rit) {
+    return lit.id < rit.id;
+}
+bool ageMark(const Item& lit, const Item& rit) {
+    return lit.age < rit.age;
+}
+bool yuwenMark(const Item& lit, const Item& rit) {
+    return lit.yuwen < rit.yuwen;
+}
+bool mathsMark(const Item& lit, const Item& rit) {
+    return lit.maths < rit.maths;
+}
+bool englishMark(const Item& lit, const Item& rit) {
+    return lit.english < rit.english;
+}
+bool computerMark(const Item& lit, const Item& rit) {
+    return lit.computer < rit.computer;
+}
+bool countMark(const Item& lit, const Item& rit) {
+    return lit.count < rit.count;
 }
 
 int main() {
     cout << "Hello world" << endl;
 
     vector<Item> stItemVec;
+    stack<string> candidate;
+    string s;
+    string buf;
+    stringstream ss(s);
+    cin >> s;
+
+    while (ss >> buf)
+        candidate.push(buf);
+
+    cin >> s;
+    cout << s;
+
+    while(cin >> s) {
+        string buf1;
+        stringstream ss1(s);
+        Item stItem1;
+        if(ss >> buf1) {
+            stItem1.id = stoi(buf1);
+        }
+        if(ss >> buf1) {
+            stItem1.name = buf1;
+        }
+        if(ss >> buf1) {
+            stItem1.type = buf1;
+        }
+        if(ss >> buf1) {
+            stItem1.age = stoi(buf1);
+        }
+        if(ss >> buf1) {
+            stItem1.yuwen = stoi(buf1);
+        }
+        if(ss >> buf1) {
+            stItem1.maths = stoi(buf1);
+        }
+        if(ss >> buf1) {
+            stItem1.english = stoi(buf1);
+        }
+        if(ss >> buf1) {
+            stItem1.computer = stoi(buf1);
+        }
+        if(ss >> buf1) {
+            stItem1.count = stoi(buf1);
+        }
+        stItemVec.push_back(stItem1);
+    }
 
 
-    Item stItem1;
-    stItem1.type = 1;
-    stItem1.id = 1;
-
-
-    Item stItem2;
-    stItem2.type = 2;
-    stItem2.id = 2;
-
-
-    Item stItem3;
-    stItem3.type = 3;
-    stItem3.id = 3;
-
-
-    Item stItem4;
-    stItem4.type = 2;
-    stItem4.id = 4;
-
-
-    stItemVec.push_back(stItem1);
-    stItemVec.push_back(stItem2);
-    stItemVec.push_back(stItem3);
-    stItemVec.push_back(stItem4);
-
-    //升序排列
-    sort(stItemVec.begin(), stItemVec.end(), lessMark);
-
-    for (size_t i = 0; i < stItemVec.size(); i++)
-        printf("type: %d, id: %d\n", stItemVec[i].type, stItemVec[i].id);
-
-    //降序排序
-    sort(stItemVec.begin(), stItemVec.end(), greaterMark);
-
-    for (size_t i = 0; i < stItemVec.size(); i++)
-        printf("type: %d, id: %d\n", stItemVec[i].type, stItemVec[i].id);
 
 
     return 0;

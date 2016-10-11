@@ -12,7 +12,14 @@ using namespace std;
 
 struct TItem {
     int id;
-    int type;
+    string name;
+    string type;
+    int age;
+    int yuwen;
+    int maths;
+    int english;
+    int computer;
+    int count;
 
     bool operator <(const TItem& rhs) const {  //升序排序时必须写的函数
         return type < rhs.type;
